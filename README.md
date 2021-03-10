@@ -1,6 +1,6 @@
 # Azure Cosmos DB - Delete/Backup documents by Query
 
-This is a very simple Visual Studio app coded in C#/dotnet core using the CosmosDB SDK to something that is not possible to do otherwise in a simple way: delete a set of documents from CosmosDB based on a SELECT query.
+This is a very simple Visual Studio app coded in C#/dotnet core using the CosmosDB SDK to something that is not possible to do otherwise in a simple way: delete a set of documents from [Azure CosmosDB](https://docs.microsoft.com/en-us/azure//cosmos-db/) based on a SELECT query.
 
 To use the code, clone the repo and edit the code to include your connection string, database and container name, as well as the SELECT query. Keep it a `SELECT *`, especially if you want to use the backup option.
 
@@ -24,8 +24,8 @@ This doesn't use the bulk execution, and reads > backups > deletes one by one, s
 
 I've had in several occasions needed to delete records en-masse from Cosmos DB. I always get to the same findings:
 
-- It's not possible in the UI (there's no Delete statement)
-- If you use a Stored Procedure in Javascript, it doesn't work cross-partition
+- It's not possible in the CosmosDB's UI (there's no DELETE statement)
+- If you use a Stored Procedure in Javascript, it doesn't delete records cross-partition
 - Using TTL expiration only applies to *all* the records in a container, it's not selective, and it's asynchronous -- sometimes you change back the TTL one hour later and all your records will be back.
 
 So yeah.
