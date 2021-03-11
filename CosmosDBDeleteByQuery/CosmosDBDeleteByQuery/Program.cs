@@ -19,6 +19,7 @@ namespace CosmosDBDeleteByQuery
         private const bool deleteDocuments = true;
 
         // BECAUSE THE CODE BELOW USES dynamic, YOU'LL NEED TO CHANGE item.pk to item.YOUR_OK_PROPERTY
+        // NOTE THAT THIS IS CAUSES A RUNTIME ERROR, NOT COMPILATION ERROR
 
         static async Task Main(string[] args)
         {
@@ -57,7 +58,6 @@ namespace CosmosDBDeleteByQuery
                             File.WriteAllText(string.Format("{0}/{1}-{2}.json", backupFolder, item.id, item.pk), item.ToString());
                             Console.Write('v');
                         }
-                        Console.Write('.');
 
                         if (deleteDocuments)
                         {
